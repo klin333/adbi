@@ -42,10 +42,6 @@
 dbSendQuery_AdbiConnection_character <- function(conn, statement, ...,
     params = NULL, immediate = is.null(params), bigint = NULL) {
 
-  if (!is.null(params)) {
-    immediate <- FALSE
-  }
-
   res <- AdbiResult(
     connection = conn,
     statement = statement,
