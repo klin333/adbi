@@ -13,6 +13,12 @@ db_data_type <- function(x, drv) {
   if (inherits(x, "blob")) {
     db_data_type_blob(drv)
   } else {
-    dbDataType(ANSI(), x)
+    if (is.logical(x)) {
+      # most adbi drivers, at least snowflake, has a BOOLEAN type
+      # https://github.com/r-dbi/adbi/issues/15
+      'BOOLEAN'
+    } else {
+      dbDataType(ANSI(), x)
+    }
   }
 }
