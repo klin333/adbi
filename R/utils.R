@@ -78,6 +78,8 @@ db_data_type_blob <- function(drv) {
     "BLOB"
   } else if (inherits(drv, "adbcpostgresql_driver_postgresql")) {
     "bytea"
+  } else if (inherits(drv, "adbcsnowflake_driver_snowflake")) {
+    "BINARY"
   } else {
     stop(
       "dbDataType for blob objects unknown for type ",
